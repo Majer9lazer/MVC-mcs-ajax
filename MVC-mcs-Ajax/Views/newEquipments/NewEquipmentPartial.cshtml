@@ -1,0 +1,10 @@
+﻿@using MVC_mcs_Ajax.DAL
+@model IEnumerable<MVC_mcs_Ajax.DAL.TrackMeter>
+
+
+@foreach (TrackMeter meter in Model.Take(5))
+{
+    <tr>
+        <td>@meter.dMeterDate</td>
+    </tr>
+}

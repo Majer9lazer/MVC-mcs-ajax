@@ -1,0 +1,95 @@
+﻿@using MVC_mcs_Ajax.DAL
+@model IEnumerable<MVC_mcs_Ajax.DAL.newEquipment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.intGarageRoom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strManufYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strSerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TablesModel.strName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TablesModel.strImage)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (newEquipment item in Model)
+        {
+
+            <tr id="tr_to_change_@item.intGarageRoom" onclick="Color_Tr('#tr_to_change_@item.intGarageRoom')">
+                <td>
+                    @using (Ajax.BeginForm("GetTrackMeterByEquipmentId", new { equipmentId = item.intEquipmentID }, new AjaxOptions() { UpdateTargetId = "table_To_Update_"+item.intEquipmentID }))
+                    {
+                        <input type="submit" value="Search"/>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.strManufYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.intSNPrefixID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.strSerialNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TablesModel.strName)
+                </td>
+                <td>
+                    <img width="100" height="70" src="http://www.ritchiewiki.com/wiki/files/Cat_12H_-_rear_view_2.jpg"/>
+                    @Html.DisplayFor(modelItem => item.TablesModel.strImage)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.intEquipmentID}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.intEquipmentID}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.intEquipmentID})
+                </td>
+
+            </tr>
+            <tr id="table_To_Update_@item.intEquipmentID"></tr>
+
+        }
+    }
+</table>
+@section scripts
+{
+    <script>
+        //$("#tr_to_change").click(function() {
+        //    $("#tr_to_change").addClass("label-danger");
+        //});
+
+        function Color_Tr(id, equipmentId) {
+            if ($(id).hasClass('label-danger')) {
+                $(id).removeClass("label-danger");
+            } else {
+                $(id).addClass("label-danger");
+
+            }
+
+        }
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+
+}

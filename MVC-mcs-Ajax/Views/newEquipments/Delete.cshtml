@@ -1,0 +1,280 @@
+﻿@model MVC_mcs_Ajax.DAL.newEquipment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>newEquipment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.intGarageRoom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intGarageRoom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strManufYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strManufYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intSNPrefixID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intSNPrefixID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strSerialNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strSerialNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intEquipmentTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intEquipmentTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intSMCSFamilyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intSMCSFamilyID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intSizeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intSizeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intMetered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intMetered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intLastMetered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intLastMetered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intTotalMetered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intTotalMetered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intlimitDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intlimitDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intlimitWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intlimitWeek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitPreservation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitPreservation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitMeter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitMeter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitKTG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitKTG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isDelete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isDelete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intLocationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intLocationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.floatCostTires)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.floatCostTires)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intCostTiresCurrency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intCostTiresCurrency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.floatAverageDivergence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.floatAverageDivergence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.floatFullPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.floatFullPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intFullPriceCurrency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intFullPriceCurrency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateStartUpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateStartUpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intServiceLife)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intServiceLife)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intHoweverOddsAcceleration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intHoweverOddsAcceleration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitMethodAmortization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitMethodAmortization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TablesManufacturer.strManufacturerChecklistId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TablesManufacturer.strManufacturerChecklistId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TablesModel.strName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TablesModel.strName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
