@@ -13,6 +13,7 @@ namespace MVC_mcs_Ajax.Models
         private static readonly string[] AllLoaders = ReturnAllLoaders();
         private static string[] ReturnAllLoaders()
         {
+
             try
             {
                 DirectoryInfo directoryInfo = new DirectoryInfo(PathToLoader);
