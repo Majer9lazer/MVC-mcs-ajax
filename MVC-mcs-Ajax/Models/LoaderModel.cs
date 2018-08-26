@@ -27,6 +27,7 @@ namespace MVC_mcs_Ajax.Models
             }
         }
 
+
         public static string GetRandomLoader()
         {
             return AllLoaders[Rnd.Next(0, AllLoaders.Length)];
