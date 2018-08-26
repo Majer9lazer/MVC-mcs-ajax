@@ -1,10 +1,28 @@
 ﻿@using MVC_mcs_Ajax.DAL
 @model IEnumerable<MVC_mcs_Ajax.DAL.TrackMeter>
-
-
-@foreach (TrackMeter meter in Model.Take(5))
+@if (Model.Any())
 {
-    <tr>
-        <td>@meter.dMeterDate</td>
-    </tr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Часы наработки</th>
+            <th>Моточасы</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (TrackMeter meter in Model)
+        {
+            <tr>
+                <td>@meter.dMeterDate</td>
+                <td>@meter.intHoursHoursOperation</td>
+                <td>@meter.intMeterReading</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-center">Ничего не найдено</p>
 }

@@ -159,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoaderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\loader\04-spinner.gif" />
+    <Content Include="Content\loader\discord-loading-image-gif-4.gif" />
+    <Content Include="Content\loader\dribbble-loader-green.gif" />
+    <Content Include="Content\loader\loader.gif" />
+    <Content Include="Content\loader\LSM5.gif" />
+    <Content Include="Content\loader\preview %281%29.gif" />
+    <Content Include="Content\loader\preview.gif" />
+    <Content Include="Content\loader\slinky_me_55432872b9575.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -213,9 +222,7 @@
     <Content Include="Views\newEquipments\Index.cshtml" />
     <Content Include="Views\newEquipments\NewEquipmentPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

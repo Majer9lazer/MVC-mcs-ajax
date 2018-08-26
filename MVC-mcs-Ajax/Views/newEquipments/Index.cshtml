@@ -1,4 +1,6 @@
-﻿@using MVC_mcs_Ajax.DAL
+﻿@using System.Threading
+@using MVC_mcs_Ajax.DAL
+@using MVC_mcs_Ajax.Models
 @model IEnumerable<MVC_mcs_Ajax.DAL.newEquipment>
 
 @{
@@ -12,7 +14,7 @@
 </p>
 
 
-<table class="table">
+<table class="table table-bordered table-responsive">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.intGarageRoom)
@@ -29,7 +31,8 @@
         <th>
             @Html.DisplayNameFor(model => model.TablesModel.strImage)
         </th>
-        <th></th>
+        <th>Action</th>
+
     </tr>
     @if (Model != null)
     {
@@ -38,16 +41,19 @@
 
             <tr id="tr_to_change_@item.intGarageRoom" onclick="Color_Tr('#tr_to_change_@item.intGarageRoom')">
                 <td>
-                    @using (Ajax.BeginForm("GetTrackMeterByEquipmentId", new { equipmentId = item.intEquipmentID }, new AjaxOptions() { UpdateTargetId = "table_To_Update_"+item.intEquipmentID }))
+                    @using (Ajax.BeginForm("GetTrackMeterByEquipmentId", new { equipmentId = item.intEquipmentID }, new AjaxOptions()
                     {
-                        <input type="submit" value="Search"/>
+                        UpdateTargetId = "table_To_Update_" + item.intEquipmentID,
+                        InsertionMode = InsertionMode.Replace,
+                        LoadingElementId = "Test_" + @item.intEquipmentID,
+                        LoadingElementDuration = 1000
+                    }))
+                    {
+                        <input type="submit" class="btn btn-info" data-toggle="collapse" data-target="#Test_1_@item.intEquipmentID" value="@item.intEquipmentID" />
                     }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.strManufYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.intSNPrefixID)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.strSerialNo)
@@ -56,18 +62,24 @@
                     @Html.DisplayFor(modelItem => item.TablesModel.strName)
                 </td>
                 <td>
-                    <img width="100" height="70" src="http://www.ritchiewiki.com/wiki/files/Cat_12H_-_rear_view_2.jpg"/>
-                    @Html.DisplayFor(modelItem => item.TablesModel.strImage)
+                    <img width="100" height="70" src="http://www.ritchiewiki.com/wiki/files/Cat_12H_-_rear_view_2.jpg" />
+                    @*@Html.DisplayFor(modelItem => item.TablesModel.strImage)*@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new {id = item.intEquipmentID}) |
-                    @Html.ActionLink("Details", "Details", new {id = item.intEquipmentID}) |
-                    @Html.ActionLink("Delete", "Delete", new {id = item.intEquipmentID})
+                    @Html.ActionLink("Edit", "Edit", new { id = item.intEquipmentID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.intEquipmentID })
+                    @*|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.intEquipmentID })*@
                 </td>
 
             </tr>
-            <tr id="table_To_Update_@item.intEquipmentID"></tr>
+            <tr class="collapse" id="Test_1_@item.intEquipmentID" >
+                <td colspan="6" id="table_To_Update_@item.intEquipmentID">
+                    <img height="250" width="300" src="~/Content/loader/@LoaderModel.GetRandomLoader()" class="center-block"  style="display: none" id="Test_@item.intEquipmentID" />
+                 <h3 class="text-center">Loading...</h3>
+                </td>
+            </tr>
 
         }
     }
@@ -75,15 +87,13 @@
 @section scripts
 {
     <script>
-        //$("#tr_to_change").click(function() {
-        //    $("#tr_to_change").addClass("label-danger");
-        //});
-
         function Color_Tr(id, equipmentId) {
             if ($(id).hasClass('label-danger')) {
+                //$("#Test_" + equipmentId).hide();
                 $(id).removeClass("label-danger");
             } else {
                 $(id).addClass("label-danger");
+                //$("#Test_" + equipmentId).show();
 
             }
 

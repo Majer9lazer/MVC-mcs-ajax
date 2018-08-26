@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using MVC_mcs_Ajax.DAL;
@@ -38,7 +40,8 @@ namespace MVC_mcs_Ajax.Controllers
 
         public PartialViewResult GetTrackMeterByEquipmentId(int equipmentId)
         {
-            var query = db.newEquipments.FirstOrDefault(w => w.intEquipmentID == equipmentId).TrackMeters.ToList();
+            List<TrackMeter> query = db.newEquipments.FirstOrDefault(w => w.intEquipmentID == equipmentId)?.TrackMeters.ToList();
+            Thread.Sleep(2000);
             return PartialView("NewEquipmentPartial", query);
         }
 
