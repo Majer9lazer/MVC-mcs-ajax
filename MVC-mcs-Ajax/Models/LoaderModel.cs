@@ -10,9 +10,7 @@ namespace MVC_mcs_Ajax.Models
     {
         private static readonly string PathToLoader = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory)?.FullName + "/Content/loader";
         private static readonly Random Rnd = new Random();
-
         private static readonly string[] AllLoaders = ReturnAllLoaders();
-
         private static string[] ReturnAllLoaders()
         {
             try
