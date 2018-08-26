@@ -10,7 +10,7 @@ using MVC_mcs_Ajax.DAL;
 
 namespace MVC_mcs_Ajax.Controllers
 {
-    public class newEquipmentsController : Controller
+    public class NewEquipmentsController : Controller
     {
         private MCSEntities db = new MCSEntities();
 
