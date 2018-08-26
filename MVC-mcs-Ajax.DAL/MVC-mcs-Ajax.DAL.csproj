@@ -103,6 +103,7 @@
       <LastGenOutput>MCS_Db.Context.cs</LastGenOutput>
       <DependentUpon>MCS_Db.edmx</DependentUpon>
     </Content>
+    <Content Include="MCS_Db.edmx.sql" />
     <Content Include="MCS_Db.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MCS_Db.edmx</DependentUpon>
