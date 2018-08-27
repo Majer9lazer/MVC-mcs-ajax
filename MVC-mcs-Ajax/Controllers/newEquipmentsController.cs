@@ -41,8 +41,7 @@ namespace MVC_mcs_Ajax.Controllers
         public PartialViewResult GetTrackMeterByEquipmentId(int equipmentId)
         {
             List<TrackMeter> query = db.newEquipments.FirstOrDefault(w => w.intEquipmentID == equipmentId)?.TrackMeters.ToList();
-            Thread.Sleep(2000);
-
+            Thread.Sleep(4000);
             return PartialView("NewEquipmentPartial", query);
         }
 
