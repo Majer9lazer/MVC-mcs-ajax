@@ -132,54 +132,6 @@
           <Property Name="intServiceHistoryId" Type="int" />
           <Property Name="old_job_no" Type="nvarchar" MaxLength="12" />
         </EntityType>
-        <Association Name="FK_newEquipment_TablesManufacturer">
-          <End Role="TablesManufacturer" Type="Self.TablesManufacturer" Multiplicity="1" />
-          <End Role="newEquipment" Type="Self.newEquipment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TablesManufacturer">
-              <PropertyRef Name="intManufacturerID" />
-            </Principal>
-            <Dependent Role="newEquipment">
-              <PropertyRef Name="intManufacturerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_newEquipment_TablesModel">
-          <End Role="TablesModel" Type="Self.TablesModel" Multiplicity="1" />
-          <End Role="newEquipment" Type="Self.newEquipment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TablesModel">
-              <PropertyRef Name="intModelID" />
-            </Principal>
-            <Dependent Role="newEquipment">
-              <PropertyRef Name="intModelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_newTablesModel_newTablesModel">
-          <End Role="TablesManufacturer" Type="Self.TablesManufacturer" Multiplicity="0..1" />
-          <End Role="TablesModel" Type="Self.TablesModel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TablesManufacturer">
-              <PropertyRef Name="intManufacturerID" />
-            </Principal>
-            <Dependent Role="TablesModel">
-              <PropertyRef Name="intManufacturerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TrackMeter_newEquipment">
-          <End Role="newEquipment" Type="Self.newEquipment" Multiplicity="1" />
-          <End Role="TrackMeter" Type="Self.TrackMeter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="newEquipment">
-              <PropertyRef Name="intEquipmentID" />
-            </Principal>
-            <Dependent Role="TrackMeter">
-              <PropertyRef Name="intEquipmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TrackServiceHistory_newEquipment">
           <End Role="newEquipment" Type="Self.newEquipment" Multiplicity="0..1" />
           <End Role="TrackServiceHistory" Type="Self.TrackServiceHistory" Multiplicity="*" />
@@ -192,6 +144,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TrackServiceHistoryPart_TrackServiceHistory">
+          <End Role="TrackServiceHistory" Type="Self.TrackServiceHistory" Multiplicity="0..1" />
+          <End Role="TrackServiceHistoryPart" Type="Self.TrackServiceHistoryPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrackServiceHistory">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Principal>
+            <Dependent Role="TrackServiceHistoryPart">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackServiceHistoryProvider_TrackServiceHistory">
+          <End Role="TrackServiceHistory" Type="Self.TrackServiceHistory" Multiplicity="0..1" />
+          <End Role="TrackServiceHistoryProvider" Type="Self.TrackServiceHistoryProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrackServiceHistory">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Principal>
+            <Dependent Role="TrackServiceHistoryProvider">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MCSModelStoreContainer">
           <EntitySet Name="newEquipment" EntityType="Self.newEquipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TablesManufacturer" EntityType="Self.TablesManufacturer" Schema="dbo" store:Type="Tables" />
@@ -200,25 +176,17 @@
           <EntitySet Name="TrackServiceHistory" EntityType="Self.TrackServiceHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrackServiceHistoryPart" EntityType="Self.TrackServiceHistoryPart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrackServiceHistoryProvider" EntityType="Self.TrackServiceHistoryProvider" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_newEquipment_TablesManufacturer" Association="Self.FK_newEquipment_TablesManufacturer">
-            <End Role="TablesManufacturer" EntitySet="TablesManufacturer" />
-            <End Role="newEquipment" EntitySet="newEquipment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_newEquipment_TablesModel" Association="Self.FK_newEquipment_TablesModel">
-            <End Role="TablesModel" EntitySet="TablesModel" />
-            <End Role="newEquipment" EntitySet="newEquipment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_newTablesModel_newTablesModel" Association="Self.FK_newTablesModel_newTablesModel">
-            <End Role="TablesManufacturer" EntitySet="TablesManufacturer" />
-            <End Role="TablesModel" EntitySet="TablesModel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TrackMeter_newEquipment" Association="Self.FK_TrackMeter_newEquipment">
-            <End Role="newEquipment" EntitySet="newEquipment" />
-            <End Role="TrackMeter" EntitySet="TrackMeter" />
-          </AssociationSet>
           <AssociationSet Name="FK_TrackServiceHistory_newEquipment" Association="Self.FK_TrackServiceHistory_newEquipment">
             <End Role="newEquipment" EntitySet="newEquipment" />
             <End Role="TrackServiceHistory" EntitySet="TrackServiceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackServiceHistoryPart_TrackServiceHistory" Association="Self.FK_TrackServiceHistoryPart_TrackServiceHistory">
+            <End Role="TrackServiceHistory" EntitySet="TrackServiceHistory" />
+            <End Role="TrackServiceHistoryPart" EntitySet="TrackServiceHistoryPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackServiceHistoryProvider_TrackServiceHistory" Association="Self.FK_TrackServiceHistoryProvider_TrackServiceHistory">
+            <End Role="TrackServiceHistory" EntitySet="TrackServiceHistory" />
+            <End Role="TrackServiceHistoryProvider" EntitySet="TrackServiceHistoryProvider" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -252,6 +220,14 @@
           <AssociationSet Name="FK_newTablesModel_newTablesModel" Association="MCSModel.FK_newTablesModel_newTablesModel">
             <End Role="TablesManufacturer" EntitySet="TablesManufacturers" />
             <End Role="TablesModel" EntitySet="TablesModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackServiceHistoryProvider_TrackServiceHistory" Association="MCSModel.FK_TrackServiceHistoryProvider_TrackServiceHistory">
+            <End Role="TrackServiceHistory" EntitySet="TrackServiceHistories" />
+            <End Role="TrackServiceHistoryProvider" EntitySet="TrackServiceHistoryProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackServiceHistoryPart_TrackServiceHistory" Association="MCSModel.FK_TrackServiceHistoryPart_TrackServiceHistory">
+            <End Role="TrackServiceHistory" EntitySet="TrackServiceHistories" />
+            <End Role="TrackServiceHistoryPart" EntitySet="TrackServiceHistoryParts" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="newEquipment">
@@ -367,6 +343,8 @@
           <Property Name="floatMtbsAfterPm" Type="Double" />
           <Property Name="intMtbsAfterPmServiceId" Type="Int32" />
           <NavigationProperty Name="newEquipment" Relationship="MCSModel.FK_TrackServiceHistory_newEquipment" FromRole="TrackServiceHistory" ToRole="newEquipment" />
+          <NavigationProperty Name="TrackServiceHistoryProviders" Relationship="MCSModel.FK_TrackServiceHistoryProvider_TrackServiceHistory" FromRole="TrackServiceHistory" ToRole="TrackServiceHistoryProvider" />
+          <NavigationProperty Name="TrackServiceHistoryParts" Relationship="MCSModel.FK_TrackServiceHistoryPart_TrackServiceHistory" FromRole="TrackServiceHistory" ToRole="TrackServiceHistoryPart" />
         </EntityType>
         <EntityType Name="TrackServiceHistoryPart">
           <Key>
@@ -379,6 +357,7 @@
           <Property Name="unit_cost" Type="Double" />
           <Property Name="old_job_no" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="intUnitCostCurrency" Type="Int32" />
+          <NavigationProperty Name="TrackServiceHistory" Relationship="MCSModel.FK_TrackServiceHistoryPart_TrackServiceHistory" FromRole="TrackServiceHistoryPart" ToRole="TrackServiceHistory" />
         </EntityType>
         <EntityType Name="TrackServiceHistoryProvider">
           <Key>
@@ -390,6 +369,7 @@
           <Property Name="intLaborRate" Type="Double" />
           <Property Name="intServiceHistoryId" Type="Int32" />
           <Property Name="old_job_no" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TrackServiceHistory" Relationship="MCSModel.FK_TrackServiceHistoryProvider_TrackServiceHistory" FromRole="TrackServiceHistoryProvider" ToRole="TrackServiceHistory" />
         </EntityType>
         <Association Name="FK_newEquipment_TablesManufacturer">
           <End Type="MCSModel.TablesManufacturer" Role="TablesManufacturer" Multiplicity="1" />
@@ -448,6 +428,30 @@
             </Principal>
             <Dependent Role="TablesModel">
               <PropertyRef Name="intManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackServiceHistoryProvider_TrackServiceHistory">
+          <End Type="MCSModel.TrackServiceHistory" Role="TrackServiceHistory" Multiplicity="0..1" />
+          <End Type="MCSModel.TrackServiceHistoryProvider" Role="TrackServiceHistoryProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrackServiceHistory">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Principal>
+            <Dependent Role="TrackServiceHistoryProvider">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackServiceHistoryPart_TrackServiceHistory">
+          <End Type="MCSModel.TrackServiceHistory" Role="TrackServiceHistory" Multiplicity="0..1" />
+          <End Type="MCSModel.TrackServiceHistoryPart" Role="TrackServiceHistoryPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrackServiceHistory">
+              <PropertyRef Name="intServiceHistoryId" />
+            </Principal>
+            <Dependent Role="TrackServiceHistoryPart">
+              <PropertyRef Name="intServiceHistoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

@@ -10,13 +10,15 @@
         <EntityTypeShape EntityType="MCSModel.TablesModel" Width="1.5" PointX="3" PointY="7.125" />
         <EntityTypeShape EntityType="MCSModel.TrackMeter" Width="1.5" PointX="7.5" PointY="3" />
         <EntityTypeShape EntityType="MCSModel.TrackServiceHistory" Width="1.5" PointX="7.5" PointY="7" />
-        <EntityTypeShape EntityType="MCSModel.TrackServiceHistoryPart" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MCSModel.TrackServiceHistoryPart" Width="1.75" PointX="0.5" PointY="0.75" />
         <EntityTypeShape EntityType="MCSModel.TrackServiceHistoryProvider" Width="1.5" PointX="2.75" PointY="0.75" />
         <AssociationConnector Association="MCSModel.FK_newEquipment_TablesManufacturer" />
         <AssociationConnector Association="MCSModel.FK_newEquipment_TablesModel" />
         <AssociationConnector Association="MCSModel.FK_TrackMeter_newEquipment" />
         <AssociationConnector Association="MCSModel.FK_TrackServiceHistory_newEquipment" />
         <AssociationConnector Association="MCSModel.FK_newTablesModel_newTablesModel" />
+        <AssociationConnector Association="MCSModel.FK_TrackServiceHistoryProvider_TrackServiceHistory" />
+        <AssociationConnector Association="MCSModel.FK_TrackServiceHistoryPart_TrackServiceHistory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

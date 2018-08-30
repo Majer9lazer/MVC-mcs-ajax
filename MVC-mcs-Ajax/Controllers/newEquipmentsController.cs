@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using MVC_mcs_Ajax.DAL;
@@ -38,11 +39,29 @@ namespace MVC_mcs_Ajax.Controllers
             return View(newEquipment);
         }
 
-        public PartialViewResult GetTrackMeterByEquipmentId(int equipmentId)
+        public async Task<ActionResult> GetTrackMeterByEquipmentId(int equipmentId)
         {
-            List<TrackMeter> query = db.newEquipments.FirstOrDefault(w => w.intEquipmentID == equipmentId)?.TrackMeters.ToList();
-            Thread.Sleep(4000);
+            newEquipment query = await db.newEquipments.FirstOrDefaultAsync(w => w.intEquipmentID == equipmentId);
+            if (query == null)
+            {
+                return HttpNotFound();
+            }
+            Thread.Sleep(new Random().Next(4000));
             return PartialView("NewEquipmentPartial", query);
+        }
+
+        public async Task<ActionResult> GetServiceHistoryPart(int serviceHistoryId = 0)
+        {
+            if (serviceHistoryId != 0 && Request.IsAjaxRequest())
+            {
+                Thread.Sleep(new Random().Next(4000));
+
+                return PartialView(await db.TrackServiceHistories.FirstOrDefaultAsync(w => w.intServiceHistoryId == serviceHistoryId));
+            }
+
+            return RedirectToAction("Index", "Home");
+
+
         }
 
         // GET: newEquipments/Create

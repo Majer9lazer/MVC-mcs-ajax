@@ -224,6 +224,7 @@
     <Content Include="Views\newEquipments\Edit.cshtml" />
     <Content Include="Views\newEquipments\Index.cshtml" />
     <Content Include="Views\newEquipments\NewEquipmentPartial.cshtml" />
+    <Content Include="Views\newEquipments\GetServiceHistoryPart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

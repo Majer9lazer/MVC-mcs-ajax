@@ -1,26 +1,93 @@
-﻿@using MVC_mcs_Ajax.DAL
-@model IEnumerable<MVC_mcs_Ajax.DAL.TrackMeter>
-@if (Model.Any())
+﻿@using System.Globalization
+@using MVC_mcs_Ajax.DAL
+@using MVC_mcs_Ajax.Models
+@*@model IEnumerable<MVC_mcs_Ajax.DAL.TrackMeter>*@
+@model newEquipment
+@if (Model != null)
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Дата</th>
-            <th>Часы наработки</th>
-            <th>Моточасы</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (TrackMeter meter in Model)
+
+    <div class="container-fluid">
+        @if (Model.TrackMeters.Any())
         {
-            <tr>
-                <td>@meter.dMeterDate</td>
-                <td>@meter.intHoursHoursOperation</td>
-                <td>@meter.intMeterReading</td>
-            </tr>
+            <div class="row">
+                <table class="table table-bordered table-hover">
+                    <text>Track Meter</text>
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Часы наработки</th>
+                            <th>Моточасы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (TrackMeter meter in Model.TrackMeters)
+                        {
+                            <tr>
+                                <td>@meter.dMeterDate</td>
+                                <td>@meter.intHoursHoursOperation</td>
+                                <td>@meter.intMeterReading</td>
+                            </tr>
+                            <tr></tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
         }
-        </tbody>
-    </table>
+        else
+        {
+            <p>Track meters is empty</p>
+        }
+        @if (Model.TrackServiceHistories.Any())
+        {
+            
+            <div class="row">
+                <table class="table table-bordered table-hover">
+                    <text>TrackServiceHistory</text>
+                    <thead>
+                        <tr>
+                            <th>Дата остановки</th>
+                            <th>Причина остановки</th>
+                            <th>Описание проблемы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (TrackServiceHistory serviceHistory in Model.TrackServiceHistories)
+                        {
+                            <tr>
+                                <td data-toggle="collapse" data-target="#table_row_to_open_@serviceHistory.intServiceHistoryId">
+                                    @Ajax.ActionLink(serviceHistory.dRepairDate.ToLongDateString(), "GetServiceHistoryPart",
+                                        new {serviceHistoryId = serviceHistory.intServiceHistoryId}, new AjaxOptions()
+                                        {
+                                            LoadingElementId = "Loading_Image_" + serviceHistory.intServiceHistoryId,
+                                            LoadingElementDuration = 1000,
+                                            UpdateTargetId = $"trackServiceHistoryTable_to_update_{@serviceHistory.intServiceHistoryId}",
+                                            InsertionMode = InsertionMode.Replace
+
+                                        },new{@class="btn btn-primary"})
+                                </td>
+                                <td>@serviceHistory.intStopReason</td>
+                                <td>@serviceHistory.strDescriptionProblem</td>
+
+                            </tr>
+                            <tr class="collapse" id="table_row_to_open_@serviceHistory.intServiceHistoryId">
+                                <td colspan="6" id="trackServiceHistoryTable_to_update_@serviceHistory.intServiceHistoryId">
+                                    <img height="250" width="300" src="~/Content/loader/@LoaderModel.GetRandomLoader()" class="center-block" style="display: none" id="Loading_Image_@serviceHistory.intServiceHistoryId" />
+                                    <h3 class="text-center">Loading...</h3>
+                                </td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>TrackServiceHistories is empty</p>
+        }
+
+    </div>
 }
 else
 {

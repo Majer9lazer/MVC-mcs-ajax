@@ -1,0 +1,74 @@
+﻿@using MVC_mcs_Ajax.DAL
+@model TrackServiceHistory
+@if (Model != null)
+{
+    if (Model.TrackServiceHistoryParts.Any())
+    {
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-bordered table-hover">
+                    <text>TrackServiceHistoryPart</text>
+                    <thead>
+                    <tr>
+                        <th>
+                            Код запчасти
+                        </th>
+                        <th>
+                            Количество
+                        </th>
+                        <th>
+                            Цена
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (TrackServiceHistoryPart item in Model.TrackServiceHistoryParts)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.intMasterPartId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.unit_cost)
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-bordered table-hover">
+                    <text>TrackServiceHistoryProvider</text>
+                    <thead>
+                    <tr>
+                        <th>
+                            ФИО 
+                        </th>
+                        <th>
+                            итого потраченное время над машиной
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (TrackServiceHistoryProvider serviceHistoryProvider in Model.TrackServiceHistoryProviders)
+                        {
+                            <tr>
+                                <td>@serviceHistoryProvider.intSupplierId</td>
+                                <td>@serviceHistoryProvider.intSupplierId</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+    }
+    else
+    {
+        <h3 class="text-center">Данных то нет</h3>
+    }
+}
+

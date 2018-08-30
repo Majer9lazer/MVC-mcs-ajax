@@ -39,7 +39,7 @@
         foreach (newEquipment item in Model)
         {
 
-            <tr id="tr_to_change_@item.intGarageRoom" onclick="Color_Tr('#tr_to_change_@item.intGarageRoom')">
+            <tr @*onclick="Color_Tr('#tr_to_change_@item.intGarageRoom')"*@>
                 <td>
                     @using (Ajax.BeginForm("GetTrackMeterByEquipmentId", new { equipmentId = item.intEquipmentID }, new AjaxOptions()
                     {
@@ -74,10 +74,10 @@
                 </td>
 
             </tr>
-            <tr class="collapse" id="Test_1_@item.intEquipmentID" >
+            <tr class="collapse" id="Test_1_@item.intEquipmentID">
                 <td colspan="6" id="table_To_Update_@item.intEquipmentID">
-                    <img height="250" width="300" src="~/Content/loader/@LoaderModel.GetRandomLoader()" class="center-block"  style="display: none" id="Test_@item.intEquipmentID" />
-                 <h3 class="text-center">Loading...</h3>
+                    <img height="250" width="300" src="~/Content/loader/@LoaderModel.GetRandomLoader()" class="center-block" style="display: none" id="Test_@item.intEquipmentID" />
+                    <h3 class="text-center">Loading...</h3>
                 </td>
             </tr>
 
@@ -87,17 +87,18 @@
 @section scripts
 {
     <script>
-        function Color_Tr(id, equipmentId) {
-            if ($(id).hasClass('label-danger')) {
-                //$("#Test_" + equipmentId).hide();
-                $(id).removeClass("label-danger");
-            } else {
-                $(id).addClass("label-danger");
-                //$("#Test_" + equipmentId).show();
+        //function Color_Tr(id, equipmentId) {
+        //    if ($(id).hasClass('label-danger')) {
+        //        //$("#Test_" + equipmentId).hide();
+        //        $(id).removeClass("label-danger");
+        //    } else {
+        //        $(id).addClass("label-danger");
+        //        //$("#Test_" + equipmentId).show();
 
-            }
+        //    }
 
-        }
+        //}
+      
     </script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
