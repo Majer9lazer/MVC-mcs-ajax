@@ -63,8 +63,7 @@ namespace MVC_mcs_Ajax.Controllers
 
 
         }
-
-        // GET: newEquipments/Create
+        [HttpPost]
         public ActionResult Create()
         {
             ViewBag.intManufacturerID = new SelectList(db.TablesManufacturers, "intManufacturerID", "strManufacturerChecklistId");

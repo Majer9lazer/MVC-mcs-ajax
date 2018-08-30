@@ -41,8 +41,8 @@
                     {
                         UpdateTargetId = "table_To_Update_" + item.intEquipmentID,
                         InsertionMode = InsertionMode.Replace,
-                        LoadingElementId = "Test_" + @item.intEquipmentID,
-                        LoadingElementDuration = 1000
+                        LoadingElementId = "loader_image_" + @item.intEquipmentID,
+                        LoadingElementDuration = new Random().Next(100,1500)
                     }))
                     {
                         <input type="submit" class="btn btn-info" data-toggle="collapse" data-target="#Test_1_@item.intEquipmentID" value="@item.intEquipmentID" />
@@ -72,7 +72,7 @@
             </tr>
             <tr class="collapse" id="Test_1_@item.intEquipmentID">
                 <td colspan="6" id="table_To_Update_@item.intEquipmentID">
-                    <img height="250" width="300" src="~/Content/loader/@LoaderModel.GetRandomLoader()" class="center-block" style="display: none" id="Test_@item.intEquipmentID" />
+                    <img height="250" width="300" src="~/Content/loader/@LoaderModel.GetRandomLoader()" class="center-block" style="display: none" id="loader_image_@item.intEquipmentID" />
                     <h3 class="text-center">Loading...</h3>
                 </td>
             </tr>
